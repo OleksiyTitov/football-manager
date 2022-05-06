@@ -22,12 +22,13 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player getByName(String name) {
-        return playerRepository.getByName(name);
+    public Player getById(Long id) {
+        return playerRepository.getById(id);
     }
 
     @Override
-    public Player update(Player player) {
+    public Player update(Long id, Player player) {
+        player.setId(id);
         return playerRepository.update(player);
     }
 

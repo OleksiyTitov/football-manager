@@ -8,9 +8,9 @@ public interface PlayerService {
 
     List<Player> getAll();
 
-    Player getByName(String name);
+    Player getById(Long id);
 
-    Player update(Player player);
+    Player update(Long id, Player player);
 
     void delete(Long id);
 }

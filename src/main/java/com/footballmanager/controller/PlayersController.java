@@ -31,16 +31,21 @@ public class PlayersController {
                 .toList();
     }
 
+    @GetMapping("/{id}")
+    PlayerResponseDto getById(@PathVariable Long id) {
+        return playersDtoMapper.mapToDto(playerService.getById(id));
+    }
+
     @PostMapping
     PlayerResponseDto create(@RequestBody @Valid PlayerRequestDto requestDto) {
         return playersDtoMapper.mapToDto(
                 playerService.save(playersDtoMapper.mapToModel(requestDto)));
     }
 
-    @PutMapping
-    PlayerResponseDto update(@RequestBody @Valid PlayerRequestDto requestDto) {
+    @PutMapping("/{id}")
+    PlayerResponseDto update(@PathVariable Long id, @RequestBody @Valid PlayerRequestDto requestDto) {
         return playersDtoMapper.mapToDto(
-                playerService.update(playersDtoMapper.mapToModel(requestDto)));
+                playerService.update(id, playersDtoMapper.mapToModel(requestDto)));
     }
 
     @DeleteMapping("/{id}")
