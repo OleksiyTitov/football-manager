@@ -3,7 +3,9 @@ package com.footballmanager.dto.mapper;
 import com.footballmanager.dto.request.PlayerRequestDto;
 import com.footballmanager.dto.response.PlayerResponseDto;
 import com.footballmanager.model.Player;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PlayersDtoMapper {
     public Player mapToModel(PlayerRequestDto dto) {
         Player player = new Player();

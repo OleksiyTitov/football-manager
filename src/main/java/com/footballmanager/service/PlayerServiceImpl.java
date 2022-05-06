@@ -27,9 +27,17 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
+    public List<Player> getAllByIds(List<Long> ids) {
+        return playerRepository.findAllById(ids);
+    }
+
+    @Override
     public Player update(Long id, Player player) {
-        player.setId(id);
-        return playerRepository.update(player);
+        Player playerFromDb = playerRepository.getById(id);
+        playerFromDb.setExperience(player.getExperience());
+        playerFromDb.setAge(playerFromDb.getAge());
+        playerFromDb.setName(player.getName());
+        return playerRepository.save(playerFromDb);
     }
 
     @Override

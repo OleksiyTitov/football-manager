@@ -10,6 +10,8 @@ public interface PlayerService {
 
     Player getById(Long id);
 
+    List<Player> getAllByIds(List<Long> ids);
+
     Player update(Long id, Player player);
 
     void delete(Long id);
