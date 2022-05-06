@@ -19,12 +19,16 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public List<Team> getAll() {
-        return null;
+        return teamRepository.findAll();
     }
 
     @Override
     public Team update(Long id, Team team) {
-        return null;
+        Team teamFromDb = teamRepository.getById(id);
+        teamFromDb.setBalance(teamFromDb.getBalance());
+        teamFromDb.setCommission(team.getCommission());
+        teamFromDb.setPlayers(team.getPlayers());
+        return teamRepository.save(teamFromDb);
     }
 
     @Override
@@ -34,6 +38,6 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public void delete(Long id) {
-
+        teamRepository.deleteById(id);
     }
 }
