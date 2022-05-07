@@ -7,6 +7,7 @@ import com.footballmanager.service.PlayerService;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
@@ -37,12 +39,14 @@ public class PlayersController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     PlayerResponseDto create(@RequestBody @Valid PlayerRequestDto requestDto) {
         return playersDtoMapper.mapToDto(
                 playerService.save(playersDtoMapper.mapToModel(requestDto)));
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     PlayerResponseDto update(@PathVariable Long id, @RequestBody @Valid PlayerRequestDto requestDto) {
         return playersDtoMapper.mapToDto(
                 playerService.update(id, playersDtoMapper.mapToModel(requestDto)));
