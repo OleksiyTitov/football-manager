@@ -21,7 +21,7 @@ public class Team {
     private Long id;
     private int commission;
     private BigDecimal balance;
-
+    private String name;
     @OneToMany
     @JoinTable(name = "teams_players",
             joinColumns = @JoinColumn(name = "team_id"),

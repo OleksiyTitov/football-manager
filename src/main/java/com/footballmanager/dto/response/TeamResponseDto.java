@@ -10,5 +10,6 @@ public class TeamResponseDto {
     private Long id;
     private int commission;
     private BigDecimal balance;
+    private String name;
     private List<Player> players;
 }

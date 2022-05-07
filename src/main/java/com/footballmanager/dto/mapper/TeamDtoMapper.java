@@ -18,6 +18,7 @@ public class TeamDtoMapper {
         Team team = new Team();
         team.setBalance(requestDto.getBalance());
         team.setCommission(requestDto.getCommission());
+        team.setName(requestDto.getName());
         team.setPlayers(playerService.getAllByIds(requestDto.getPlayerIds()));
         return team;
     }
@@ -25,6 +26,7 @@ public class TeamDtoMapper {
     public TeamResponseDto mapToDto(Team team) {
         TeamResponseDto responseDto = new TeamResponseDto();
         responseDto.setId(team.getId());
+        responseDto.setName(team.getName());
         responseDto.setBalance(team.getBalance());
         responseDto.setCommission(team.getCommission());
         responseDto.setPlayers(team.getPlayers());
