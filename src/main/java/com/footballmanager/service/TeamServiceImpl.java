@@ -2,10 +2,9 @@ package com.footballmanager.service;
 
 import com.footballmanager.model.Team;
 import com.footballmanager.repository.TeamRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

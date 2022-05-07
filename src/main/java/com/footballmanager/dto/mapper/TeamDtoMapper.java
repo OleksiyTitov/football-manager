@@ -4,13 +4,15 @@ import com.footballmanager.dto.request.TeamRequestDto;
 import com.footballmanager.dto.response.TeamResponseDto;
 import com.footballmanager.model.Team;
 import com.footballmanager.service.PlayerService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class TeamDtoMapper {
     private PlayerService playerService;
+
+    public TeamDtoMapper(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     public Team mapToModel(TeamRequestDto requestDto) {
         Team team = new Team();
