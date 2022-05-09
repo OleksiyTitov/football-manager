@@ -11,6 +11,9 @@ public class PlayersDtoMapper {
         Player player = new Player();
         player.setName(dto.getName());
         player.setAge(dto.getAge());
+        if (dto.getTeamName() != null) {
+            player.setTeamName(dto.getTeamName());
+        }
         player.setExperience(dto.getExperience());
         return player;
     }
@@ -20,6 +23,7 @@ public class PlayersDtoMapper {
         responseDto.setId(player.getId());
         responseDto.setName(player.getName());
         responseDto.setAge(player.getAge());
+        responseDto.setTeamName(player.getTeamName());
         responseDto.setExperience(player.getExperience());
         return responseDto;
     }

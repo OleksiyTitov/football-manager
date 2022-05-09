@@ -17,6 +17,16 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
+    public List<Player> saveAll(List<Player> players) {
+        return playerRepository.saveAll(players);
+    }
+
+    @Override
+    public List<Player> findPlayersWithNoTeam() {
+        return playerRepository.findAllByTeamName("No team");
+    }
+
+    @Override
     public List<Player> getAll() {
         return playerRepository.findAll();
     }
@@ -35,8 +45,9 @@ public class PlayerServiceImpl implements PlayerService {
     public Player update(Long id, Player player) {
         Player playerFromDb = playerRepository.getById(id);
         playerFromDb.setExperience(player.getExperience());
-        playerFromDb.setAge(playerFromDb.getAge());
+        playerFromDb.setAge(player.getAge());
         playerFromDb.setName(player.getName());
+        playerFromDb.setTeamName(player.getTeamName());
         return playerRepository.save(playerFromDb);
     }
 

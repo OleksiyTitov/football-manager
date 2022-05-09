@@ -17,4 +17,5 @@ public class Player {
     private int experience;
     private int age;
     private String name;
+    private String teamName = "No team";
 }

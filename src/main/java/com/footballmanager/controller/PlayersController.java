@@ -38,6 +38,13 @@ public class PlayersController {
         return playersDtoMapper.mapToDto(playerService.getById(id));
     }
 
+    @GetMapping("/no-team")
+    List<PlayerResponseDto> getPlayersWithNoTeam() {
+        return playerService.findPlayersWithNoTeam().stream()
+                .map(playersDtoMapper::mapToDto)
+                .toList();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     PlayerResponseDto create(@RequestBody @Valid PlayerRequestDto requestDto) {

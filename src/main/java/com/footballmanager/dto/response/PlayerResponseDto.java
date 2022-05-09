@@ -8,4 +8,5 @@ public class PlayerResponseDto {
     private int experience;
     private int age;
     private String name;
+    private String teamName;
 }

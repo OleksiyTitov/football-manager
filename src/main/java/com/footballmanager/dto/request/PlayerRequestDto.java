@@ -12,4 +12,5 @@ public class PlayerRequestDto {
     private int age;
     @NotBlank(message = "Name may not be blank")
     private String name;
+    private String teamName;
 }

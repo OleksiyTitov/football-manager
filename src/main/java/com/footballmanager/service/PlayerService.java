@@ -6,6 +6,10 @@ import java.util.List;
 public interface PlayerService {
     Player save(Player player);
 
+    List<Player> saveAll(List<Player> players);
+
+    List<Player> findPlayersWithNoTeam();
+
     List<Player> getAll();
 
     Player getById(Long id);

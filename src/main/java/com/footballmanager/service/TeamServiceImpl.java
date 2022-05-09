@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class TeamServiceImpl implements TeamService {
+    private static final String DEFAULT_PLAYER_TEAM_NAME = "No team";
     private final TeamRepository teamRepository;
+    private final PlayerService playerService;
 
     @Override
     public Team getById(Long id) {
@@ -26,17 +28,26 @@ public class TeamServiceImpl implements TeamService {
         Team teamFromDb = teamRepository.getById(id);
         teamFromDb.setBalance(teamFromDb.getBalance());
         teamFromDb.setCommission(team.getCommission());
+        teamFromDb.getPlayers().forEach(p -> p.setTeamName(DEFAULT_PLAYER_TEAM_NAME));
+        team.getPlayers().forEach(p -> p.setTeamName(team.getName()));
         teamFromDb.setPlayers(team.getPlayers());
         return teamRepository.save(teamFromDb);
     }
 
     @Override
     public Team save(Team team) {
+        team.getPlayers().forEach(p -> p.setTeamName(team.getName()));
+        playerService.saveAll(team.getPlayers());
         return teamRepository.save(team);
     }
 
     @Override
     public void delete(Long id) {
+        Team teamToDelete = teamRepository.getById(id);
+        teamToDelete.getPlayers().forEach(p -> {
+            p.setTeamName(DEFAULT_PLAYER_TEAM_NAME);
+            playerService.update(p.getId(), p);
+        });
         teamRepository.deleteById(id);
     }
 }
