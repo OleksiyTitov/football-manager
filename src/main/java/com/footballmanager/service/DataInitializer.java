@@ -42,7 +42,7 @@ public class DataInitializer {
         }
 
         Team firstTeam = new Team();
-        firstTeam.setName("Firs team");
+        firstTeam.setName("First team");
         firstTeam.setBalance(TEAM_BALANCE);
         firstTeam.setCommission(TEAM_COMMISSION);
         firstTeam.setPlayers(firstTeamPlayers);

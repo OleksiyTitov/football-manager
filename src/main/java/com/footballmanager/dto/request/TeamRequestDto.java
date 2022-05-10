@@ -18,5 +18,5 @@ public class TeamRequestDto {
     @NotBlank(message = "Team name can't be blank")
     private String name;
     @NotNull(message = "There must be at least one player in the team")
-    private List<Long> playerIds;
+    private List<Long> players;
 }

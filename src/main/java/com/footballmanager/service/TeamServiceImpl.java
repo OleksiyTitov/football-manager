@@ -26,6 +26,7 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team update(Long id, Team team) {
         Team teamFromDb = teamRepository.getById(id);
+        teamFromDb.setName(team.getName());
         teamFromDb.setBalance(team.getBalance());
         teamFromDb.setCommission(team.getCommission());
         teamFromDb.getPlayers().forEach(p -> p.setTeamName(DEFAULT_PLAYER_TEAM_NAME));

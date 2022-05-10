@@ -19,7 +19,7 @@ public class TeamDtoMapper {
         team.setBalance(requestDto.getBalance());
         team.setCommission(requestDto.getCommission());
         team.setName(requestDto.getName());
-        team.setPlayers(playerService.getAllByIds(requestDto.getPlayerIds()));
+        team.setPlayers(playerService.getAllByIds(requestDto.getPlayers()));
         return team;
     }
 
