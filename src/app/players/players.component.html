@@ -1,0 +1,35 @@
+<h2>Players</h2>
+
+<button type="button" class="create-button" (click)="showCreateForm()">
+  Create player
+</button>
+
+<div *ngIf="showCreateBlock">
+  <app-messages></app-messages>
+  <label for="new-player-name">Player name: </label>
+  <input id="new-player-name" #playerName />
+  <label for="new-player-age">Player age: </label>
+  <input id="new-player-age" #playerAge />
+  <label for="new-player-experience">Player experience: </label>
+  <input id="new-player-experience" #playerExperience />
+
+  <button type="button" class="add-button" (click)="add(playerName.value, Number(playerAge.value), Number(playerExperience.value))">
+    Add player
+  </button>
+  <button type="button" class="create-button" (click)="hideCreateForm()">
+    Hide
+  </button>
+</div>
+
+<ul class="players">
+  <li *ngFor="let player of players">
+    <a routerLink="/players/{{player.id}}">
+      <span class="badge">{{player.id}}</span>
+      <p class="players-text">{{player.name}}</p>
+    </a>
+      <button type="button"
+              class="delete"
+              title="delete player"
+              (click)="delete(player)">x</button>
+  </li>
+</ul>

@@ -1,0 +1,72 @@
+<div *ngIf="currentTeam">
+  <app-messages></app-messages>
+  <h2>{{currentTeam.name | uppercase}} Details</h2>
+  <div>
+    <label>id: </label>{{currentTeam.id}}
+  </div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="currentTeam.name" placeholder="name"/>
+    </label>
+    <label>commission:
+      <input [(ngModel)]="currentTeam.commission" placeholder="commission"/>
+    </label>
+    <label>balance:
+      <input [(ngModel)]="currentTeam.balance" placeholder="balance"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+  <button (click)="showPlayersWithNoTeam()">invite players to team</button>
+  <button (click)="showBuyPlayersForm()">buy players</button>
+
+  <div *ngIf="showCurrentPlayers">
+    <ul class="players">
+      <li *ngFor="let player of currentTeam.players">
+        <a routerLink="/players/{{player.id}}">
+          <span class="badge">{{player.id}}</span>
+          <p class="players-text">{{player.name}}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="showNoTeamPlayers">
+    <div *ngIf="!noTeamPlayers">
+      <label>Invite players(list the id of the players through a comma):</label>
+      <input [(ngModel)]="invitePlayersIds" placeholder="player ids"/>
+      <ul class="players">
+        <li *ngFor="let player of noTeamPlayers">
+          <a routerLink="/players/{{player.id}}">
+            <span class="badge">{{player.id}}</span>
+            <p class="players-text">{{player.name}}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button (click)="showCurrentPlayersList()">To current players list</button>
+  </div>
+
+  <div *ngIf="showBuyPlayers">
+    <app-messages></app-messages>
+    <label for="from-team-id">From team (id): </label>
+    <input id="from-team-id" placeholder="team id" #teamId />
+    <label for="player-ids">Players(list the id of the players through a comma): </label>
+    <input id="player-ids" #playerIds />
+    <button (click)="buyPlayers(Number(teamId.value), playerIds.value)">Buy players</button>
+
+    <ul class="teams">
+      <li *ngFor="let team of teams">
+        <span class="badge">{{team.id}}</span>
+        <p class="teams-text">{{team.name}}</p>
+        <ul class="players">
+          <li *ngFor="let player of team.players">
+              <span class="badge">{{player.id}}</span>
+              <p class="players-text">{{player.name}}</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</div>

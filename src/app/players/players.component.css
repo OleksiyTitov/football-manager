@@ -1,0 +1,99 @@
+input {
+  display: block;
+  width: 100%;
+  padding: .5rem;
+  margin: 1rem 0;
+  box-sizing: border-box;
+}
+
+ul.players {
+  list-style-type: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+li.player {
+  list-style-type: none;
+  margin-bottom: 55px;
+  width: fit-content;
+}
+
+span {
+  color: white; /* Цвет шрифта */
+  background-color: #404F62; /* Цвет заднего фона */
+  border-radius: 30% 0 0 30%; /* Окргуление краев */
+  padding: 5px 10px 5px 10px; /* Размер бейджа */
+  margin-right: 10px;
+}
+
+.players li:hover {
+  display: flex;
+  position: relative;
+  left: 5px;
+}
+
+p.players-text {
+  display: inline;
+  margin-right: 10px;
+}
+
+.players a {
+  color: #333;
+  text-decoration: none;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  display: inline;
+}
+
+.players a:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+}
+
+.players a:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.add-button {
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.add-button:hover {
+  color: white;
+  background-color: #42545C;
+}
+
+.create-button {
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.create-button:hover {
+  color: white;
+  background-color: #42545C;
+}
+
+button.delete {
+  background: #eee;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 5px 10px 5px 10px;
+}
+
+button.delete:hover {
+  background-color: #525252;
+  color: white;
+}

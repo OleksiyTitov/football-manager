@@ -1,0 +1,49 @@
+<h2>Teams</h2>
+
+<app-messages></app-messages>
+
+<button (click)="showCreateForm()">Create team</button>
+
+<div *ngIf="showFormCreate">
+  <app-messages></app-messages>
+  <label for="new-team-name">Team name: </label>
+  <input id="new-team-name" #teamName />
+  <label for="new-team-commission">Team commission: </label>
+  <input id="new-team-commission" #teamCommission />
+  <label for="new-team-balance">Team balance: </label>
+  <input id="new-team-balance" #teamBalance />
+  <label for="new-team-players">Players: </label>
+  <input id="new-team-players" #teamPlayers />
+
+  <ul class="teams">
+    <label>Available players:</label>
+    <li *ngFor="let player of noTeamPlayers">
+      <span class="badge">{{player.id}}</span>
+      <p class="players-text">{{player.name}}</p>
+    </li>
+  </ul>
+  <button type="button"
+          class="add-button"
+          (click)="add(teamName.value,
+                        teamPlayers.value,
+                        Number(teamCommission.value),
+                        Number(teamBalance.value))">
+    Add team
+  </button>
+  <button type="button" class="create-button" (click)="hideCreateForm()">
+    Hide
+  </button>
+</div>
+
+<ul class="teams">
+  <li *ngFor="let team of teams">
+    <a routerLink="/teams/{{team.id}}">
+      <span class="badge" >{{team.id}}</span>
+      <p class="teams-text">{{team.name}}</p>
+    </a>
+      <button type="button"
+              class="delete"
+              title="delete team"
+              (click)="delete(team)">x</button>
+  </li>
+</ul>
